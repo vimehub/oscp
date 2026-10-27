@@ -1,60 +1,87 @@
+# OSC — Open Source Code Scanner
 
 🔹 Deskripsi
-OSC (Open Source Code Scanner) adalah sebuah tool Python yang dirancang untuk membantu menemukan data sensitif yang terekspos pada website atau aplikasi web. Tool ini dapat mendeteksi:
-API Keys & Tokens
-Passwords dan kredensial database
-File konfigurasi dan file sensitif
-Alamat email dan IP internal
-Data finansial (Stripe, PayPal, Braintree)
-File backup, log, dan environment
-Multi-threaded scanning untuk performa cepat
-Laporan JSON komprehensif
-Tool ini ditujukan hanya untuk website yang kamu miliki atau memiliki izin eksplisit untuk di-scan. Penggunaan tanpa izin dapat melanggar hukum.
+
+OSC (Open Source Code Scanner) adalah tool Python yang dirancang untuk membantu menemukan data sensitif yang terekspos pada website atau aplikasi web. Tool ini dapat mendeteksi:
+
+- API Key & Token
+- Password dan kredensial database
+- File konfigurasi dan file sensitif
+- Alamat email dan IP internal
+- Data finansial (Stripe, PayPal, Braintree)
+- File backup, log, dan environment
+
+> ⚠️ Tool ini hanya untuk website yang kamu miliki atau yang sudah ada izin eksplisit untuk di-scan. Penggunaan tanpa izin dapat melanggar hukum.
 
 🔹 Fitur Utama
-Mendukung scan authenticated session menggunakan cookie.
-Multi-threaded scanning (default 10 threads).
-Timeout request dapat diatur.
-Deteksi pola regex untuk API Key, Token, Password, Database, Email, Internal IP, dan file sensitif.
-Deteksi file sensitif yang terekspos secara langsung.
-Mencari URL tambahan melalui sitemap, robots.txt, dan common paths.
-Menampilkan hasil secara real-time dengan warna.
-Membuat laporan JSON lengkap dengan ringkasan risiko.
+
+- Mendukung scan dengan sesi terautentikasi menggunakan cookie.
+- Scan multi-thread (default 10 thread).
+- Timeout request dapat diatur.
+- Deteksi pola regex untuk API Key, Token, Password, Database, Email, IP Internal, dan file sensitif.
+- Deteksi file sensitif yang terekspos secara langsung.
+- Mencari URL tambahan melalui sitemap, robots.txt, dan common path.
+- Menampilkan hasil secara real-time dengan warna.
+- Membuat laporan JSON lengkap dengan ringkasan risiko.
 
 🔹 Instalasi
+
 Clone repository ini:
+
+```
 git clone https://github.com/vimehub/oscp.git
-cd osc
+cd oscp
+```
 
-USAGE:
-    python3 oscp.py [OPTIONS] TARGET_URL
+PENGGUNAAN:
 
-OPTIONS:
-    -s, --session SESSION    Session cookie for authenticated scanning
-    -t, --threads THREADS    Number of threads (default: 10)
-    --timeout TIMEOUT        Request timeout in seconds (default: 10)
-    -o, --output FILE        Output file for JSON report
-    -h, --help               Show this help message
+```
+python3 oscp.py [OPSI] URL_TARGET
+```
 
-EXAMPLES:
-    Basic scan:
-    python3 osc.py https://example.com
+OPSI:
 
-    Scan with session cookie:
-    python3 osc.py -s "session_cookie_value" https://example.com
+```
+-s, --session SESSION    Cookie sesi untuk scan terautentikasi
+-t, --threads THREADS    Jumlah thread (default: 10)
+--timeout TIMEOUT        Timeout request dalam detik (default: 10)
+-o, --output FILE        File output untuk laporan JSON
+-h, --help               Tampilkan pesan bantuan ini
+```
 
-    Custom threads and timeout:
-    python3 osc.py -t 5 --timeout 15 https://example.com
+CONTOH:
 
-    Save report to file:
-    python3 osc.py -o scan_report.json https://example.com
+Scan dasar:
 
-FEATURES:
-    • API Keys & Tokens detection
-    • Database credentials scanning
-    • Sensitive file discovery
-    • Configuration files detection
-    • Email addresses and internal IPs
-    • Financial data scanning
-    • Multi-threaded scanning
-    • JSON report generation
+```
+python3 oscp.py https://example.com
+```
+
+Scan dengan cookie sesi:
+
+```
+python3 oscp.py -s "nilai_cookie_sesi" https://example.com
+```
+
+Thread dan timeout kustom:
+
+```
+python3 oscp.py -t 5 --timeout 15 https://example.com
+```
+
+Simpan laporan ke file:
+
+```
+python3 oscp.py -o laporan_scan.json https://example.com
+```
+
+FITUR:
+
+- Deteksi API Key & Token
+- Scan kredensial database
+- Penemuan file sensitif
+- Deteksi file konfigurasi
+- Alamat email dan IP internal
+- Scan data finansial
+- Scan multi-thread
+- Pembuatan laporan JSON
