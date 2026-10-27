@@ -49,7 +49,7 @@ class EnhancedOSCScanner:
         # Add session cookie if provided
         if session_cookie:
             self.session.cookies.update({'session': session_cookie})
-            print(f"{Fore.GREEN}[+] Session cookie loaded{Style.RESET_ALL}")
+            print(f"{Fore.GREEN}[+] Cookie sesi dimuat{Style.RESET_ALL}")
         
         # Enhanced regex patterns for sensitive data
         self.patterns = {
@@ -135,8 +135,8 @@ class EnhancedOSCScanner:
 {Fore.YELLOW}Tool pentest BugBounty
 {Style.RESET_ALL}
 Target: {self.target}
-Session: {'Provided' if self.session_cookie else 'Not Provided'}
-Threads: {self.max_threads} | Timeout: {self.timeout}s
+Sesi: {'Disediakan' if self.session_cookie else 'Tidak disediakan'}
+Thread: {self.max_threads} | Timeout: {self.timeout} detik
         """
         print(banner)
 
@@ -146,42 +146,42 @@ Threads: {self.max_threads} | Timeout: {self.timeout}s
 {Fore.CYAN}OSC - Open Source Code Scanner{Style.RESET_ALL}
 {Fore.YELLOW}Author: iyanji{Style.RESET_ALL}
 
-{Fore.GREEN}USAGE:{Style.RESET_ALL}
-    python3 osc.py [OPTIONS] TARGET_URL
+{Fore.GREEN}PENGGUNAAN:{Style.RESET_ALL}
+    python3 oscp.py [OPSI] URL_TARGET
 
-{Fore.GREEN}OPTIONS:{Style.RESET_ALL}
-    -s, --session SESSION    Session cookie for authenticated scanning
-    -t, --threads THREADS    Number of threads (default: 10)
-    --timeout TIMEOUT        Request timeout in seconds (default: 10)
-    -o, --output FILE        Output file for JSON report
-    -h, --help               Show this help message
+{Fore.GREEN}OPSI:{Style.RESET_ALL}
+    -s, --session SESSION    Cookie sesi untuk scan terautentikasi
+    -t, --threads THREADS    Jumlah thread (default: 10)
+    --timeout TIMEOUT        Timeout request dalam detik (default: 10)
+    -o, --output FILE        File output untuk laporan JSON
+    -h, --help               Tampilkan pesan bantuan ini
 
-{Fore.GREEN}EXAMPLES:{Style.RESET_ALL}
-    {Fore.WHITE}Basic scan:{Style.RESET_ALL}
-    python3 osc.py https://example.com
+{Fore.GREEN}CONTOH:{Style.RESET_ALL}
+    {Fore.WHITE}Scan dasar:{Style.RESET_ALL}
+    python3 oscp.py https://example.com
 
-    {Fore.WHITE}Scan with session cookie:{Style.RESET_ALL}
-    python3 osc.py -s "session_cookie_value" https://example.com
+    {Fore.WHITE}Scan dengan cookie sesi:{Style.RESET_ALL}
+    python3 oscp.py -s "session_cookie_value" https://example.com
 
-    {Fore.WHITE}Custom threads and timeout:{Style.RESET_ALL}
-    python3 osc.py -t 5 --timeout 15 https://example.com
+    {Fore.WHITE}Thread dan timeout kustom:{Style.RESET_ALL}
+    python3 oscp.py -t 5 --timeout 15 https://example.com
 
-    {Fore.WHITE}Save report to file:{Style.RESET_ALL}
-    python3 osc.py -o scan_report.json https://example.com
+    {Fore.WHITE}Simpan laporan ke file:{Style.RESET_ALL}
+    python3 oscp.py -o scan_report.json https://example.com
 
-{Fore.GREEN}FEATURES:{Style.RESET_ALL}
-    • API Keys & Tokens detection
-    • Database credentials scanning
-    • Sensitive file discovery
-    • Configuration files detection
-    • Email addresses and internal IPs
-    • Financial data scanning
-    • Multi-threaded scanning
-    • JSON report generation
+{Fore.GREEN}FITUR:{Style.RESET_ALL}
+    • Deteksi API Key & Token
+    • Scan kredensial database
+    • Penemuan file sensitif
+    • Deteksi file konfigurasi
+    • Alamat email dan IP internal
+    • Scan data finansial
+    • Scan multi-thread
+    • Pembuatan laporan JSON
 
-{Fore.RED}LEGAL DISCLAIMER:{Style.RESET_ALL}
-    Use this tool only on websites you own or have explicit permission to test.
-    Unauthorized scanning may be illegal in your jurisdiction.
+{Fore.RED}DISCLAIMER HUKUM:{Style.RESET_ALL}
+    Gunakan tool ini hanya pada website yang kamu miliki atau yang sudah ada izin eksplisit untuk dites.
+    Scan tanpa izin dapat melanggar hukum di wilayah kamu.
         """
         print(help_text)
 
@@ -347,7 +347,7 @@ Threads: {self.max_threads} | Timeout: {self.timeout}s
                     finding = {
                         'url': url,
                         'category': 'exposed_sensitive_file',
-                        'value': f"Exposed {file_pattern} file ({content_length} bytes)",
+                        'value': f"File {file_pattern} terekspos ({content_length} byte)",
                         'pattern': 'direct_access',
                         'content_type': content_type
                     }
@@ -452,25 +452,25 @@ Threads: {self.max_threads} | Timeout: {self.timeout}s
         print(f"{color}[{category_display}] {Fore.WHITE}{finding['url']}")
         print(f"     {Fore.CYAN}Data: {Fore.WHITE}{finding['value']}")
         if finding.get('content_type'):
-            print(f"     {Fore.CYAN}Type: {Fore.WHITE}{finding['content_type']}")
+            print(f"     {Fore.CYAN}Tipe: {Fore.WHITE}{finding['content_type']}")
         print()
 
     def print_summary_report(self):
         """Print comprehensive summary report at the end"""
         print(f"\n{Fore.GREEN}{'='*60}{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}{' OSC SCAN SUMMARY REPORT ':^60}{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}{' LAPORAN RINGKASAN SCAN OSC ':^60}{Style.RESET_ALL}")
         print(f"{Fore.GREEN}{'='*60}{Style.RESET_ALL}")
         
         # Basic scan info
-        print(f"{Fore.YELLOW}Scan Information:{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}Informasi Scan:{Style.RESET_ALL}")
         print(f"  Target: {self.target}")
-        print(f"  Session: {'Provided' if self.session_cookie else 'Not Provided'}")
-        print(f"  URLs Scanned: {len(self.visited_urls)}")
-        print(f"  Scan Duration: {round(time.time() - self.start_time, 2)} seconds")
+        print(f"  Sesi: {'Disediakan' if self.session_cookie else 'Tidak disediakan'}")
+        print(f"  URL yang di-scan: {len(self.visited_urls)}")
+        print(f"  Durasi Scan: {round(time.time() - self.start_time, 2)} detik")
         
         # Findings summary
-        print(f"\n{Fore.YELLOW}Findings Summary:{Style.RESET_ALL}")
-        print(f"  Total Findings: {len(self.found_sensitive_data)}")
+        print(f"\n{Fore.YELLOW}Ringkasan Temuan:{Style.RESET_ALL}")
+        print(f"  Total Temuan: {len(self.found_sensitive_data)}")
         
         # Group by category
         findings_by_category = {}
@@ -491,13 +491,13 @@ Threads: {self.max_threads} | Timeout: {self.timeout}s
             risk_level = self.get_risk_level(category)
             color = risk_colors.get(risk_level, Fore.WHITE)
             category_display = category.upper().replace('_', ' ')
-            print(f"  {color}{category_display}: {len(findings)} findings ({risk_level} risk){Style.RESET_ALL}")
+            print(f"  {color}{category_display}: {len(findings)} temuan ({risk_level} risiko){Style.RESET_ALL}")
         
         # Risk assessment
         overall_risk = self.assess_overall_risk(findings_by_category)
         risk_color = risk_colors.get(overall_risk, Fore.WHITE)
-        print(f"\n{Fore.YELLOW}Overall Risk Assessment:{Style.RESET_ALL}")
-        print(f"  {risk_color}{overall_risk} RISK{Style.RESET_ALL}")
+        print(f"\n{Fore.YELLOW}Penilaian Risiko Keseluruhan:{Style.RESET_ALL}")
+        print(f"  {risk_color}RISIKO {overall_risk}{Style.RESET_ALL}")
         
         # Critical findings highlight
         critical_categories = ['api_keys', 'passwords', 'database', 'financial']
@@ -507,12 +507,12 @@ Threads: {self.max_threads} | Timeout: {self.timeout}s
                 critical_findings.extend(findings_by_category[category])
         
         if critical_findings:
-            print(f"\n{Fore.RED}CRITICAL FINDINGS ({len(critical_findings)}):{Style.RESET_ALL}")
+            print(f"\n{Fore.RED}TEMUAN KRITIS ({len(critical_findings)}):{Style.RESET_ALL}")
             for i, finding in enumerate(critical_findings[:5], 1):  # Show top 5
                 print(f"  {i}. {finding['url']}")
                 print(f"     Data: {finding['value']}")
             if len(critical_findings) > 5:
-                print(f"  ... and {len(critical_findings) - 5} more critical findings")
+                print(f"  ... and {len(critical_findings) - 5} temuan kritis lainnya")
         
         print(f"{Fore.GREEN}{'='*60}{Style.RESET_ALL}")
 
@@ -583,9 +583,9 @@ Threads: {self.max_threads} | Timeout: {self.timeout}s
             try:
                 with open(output_file, 'w') as f:
                     json.dump(report, f, indent=2)
-                print(f"{Fore.GREEN}[+] Report saved to: {output_file}{Style.RESET_ALL}")
+                print(f"{Fore.GREEN}[+] Laporan disimpan ke: {output_file}{Style.RESET_ALL}")
             except Exception as e:
-                print(f"{Fore.RED}[-] Error saving report: {e}{Style.RESET_ALL}")
+                print(f"{Fore.RED}[-] Gagal menyimpan laporan: {e}{Style.RESET_ALL}")
         
         return report
 
@@ -593,14 +593,14 @@ Threads: {self.max_threads} | Timeout: {self.timeout}s
         """Main scanning function"""
         self.print_banner()
         
-        print(f"{Fore.GREEN}[*] Starting OSC Scan...{Style.RESET_ALL}")
-        print(f"{Fore.GREEN}[*] Discovering URLs...{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}[*] Memulai Scan OSC...{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}[*] Mencari URL...{Style.RESET_ALL}")
         
-        # Discover URLs to scan
+        # Discover URL untuk di-scan
         urls_to_scan = self.discover_urls(self.target)
         
-        print(f"{Fore.GREEN}[*] Found {len(urls_to_scan)} URLs to scan{Style.RESET_ALL}")
-        print(f"{Fore.GREEN}[*] Scanning for sensitive data...{Style.RESET_ALL}\n")
+        print(f"{Fore.GREEN}[*] Ditemukan {len(urls_to_scan)} URL untuk di-scan{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}[*] Memindai data sensitif...{Style.RESET_ALL}\n")
         
         # Scan URLs with threading
         with ThreadPoolExecutor(max_workers=self.max_threads) as executor:
@@ -614,12 +614,12 @@ Threads: {self.max_threads} | Timeout: {self.timeout}s
 
 def main():
     parser = argparse.ArgumentParser(description='OSC - Open Source Code Scanner', add_help=False)
-    parser.add_argument('target', nargs='?', help='Target URL to scan')
-    parser.add_argument('-s', '--session', help='Session cookie for authenticated scanning')
-    parser.add_argument('-t', '--threads', type=int, default=10, help='Number of threads (default: 10)')
-    parser.add_argument('--timeout', type=int, default=10, help='Request timeout in seconds (default: 10)')
-    parser.add_argument('-o', '--output', help='Output file for JSON report')
-    parser.add_argument('-h', '--help', action='store_true', help='Show help message')
+    parser.add_argument('target', nargs='?', help='URL target yang di-scan')
+    parser.add_argument('-s', '--session', help='Cookie sesi untuk scan terautentikasi')
+    parser.add_argument('-t', '--threads', type=int, default=10, help='Jumlah thread (default: 10)')
+    parser.add_argument('--timeout', type=int, default=10, help='Timeout request dalam detik (default: 10)')
+    parser.add_argument('-o', '--output', help='File output untuk laporan JSON')
+    parser.add_argument('-h', '--help', action='store_true', help='Tampilkan pesan bantuan')
     
     args = parser.parse_args()
     
@@ -644,10 +644,10 @@ def main():
         )
         scanner.run_scan(output_file=args.output)
     except KeyboardInterrupt:
-        print(f"\n{Fore.RED}[!] Scan interrupted by user{Style.RESET_ALL}")
+        print(f"\n{Fore.RED}[!] Scan dihentikan oleh pengguna{Style.RESET_ALL}")
         sys.exit(1)
     except Exception as e:
-        print(f"{Fore.RED}[!] Error: {str(e)}{Style.RESET_ALL}")
+        print(f"{Fore.RED}[!] Kesalahan: {str(e)}{Style.RESET_ALL}")
         sys.exit(1)
 
 if __name__ == "__main__":
