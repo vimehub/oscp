@@ -142,7 +142,7 @@ Thread: {self.max_threads} | Timeout: {self.timeout} detik
         """Print help information"""
         help_text = f"""
 {Fore.CYAN}OSC - Open Source Code Scanner{Style.RESET_ALL}
-{Fore.YELLOW}Author: iyanji{Style.RESET_ALL}
+{Fore.YELLOW}Tools BugBounty{Style.RESET_ALL}
 
 {Fore.GREEN}PENGGUNAAN:{Style.RESET_ALL}
     python3 oscp.py [OPSI] URL_TARGET
