@@ -456,7 +456,7 @@ Thread: {self.max_threads} | Timeout: {self.timeout} detik
     def print_summary_report(self):
         """Print comprehensive summary report at the end"""
         print(f"\n{Fore.GREEN}{'='*60}{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}{' LAPORAN RINGKASAN SCAN OSC ':^60}{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}{' LAPORAN RINGKASAN SCAN OSCP ':^60}{Style.RESET_ALL}")
         print(f"{Fore.GREEN}{'='*60}{Style.RESET_ALL}")
         
         # Basic scan info
