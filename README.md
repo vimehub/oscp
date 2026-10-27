@@ -1,8 +1,8 @@
-# OSC — Open Source Code Scanner
+# OSCP — Open Source Code Project Scanner
 
 🔹 Deskripsi
 
-OSC (Open Source Code Scanner) adalah tool Python yang dirancang untuk membantu menemukan data sensitif yang terekspos pada website atau aplikasi web. Tool ini dapat mendeteksi:
+OSCP (Open Source Code Project Scanner) adalah tool Python yang dirancang untuk membantu menemukan data sensitif yang terekspos pada website atau aplikasi web. Tool ini dapat mendeteksi:
 
 - API Key & Token
 - Password dan kredensial database
