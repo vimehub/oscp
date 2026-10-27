@@ -129,7 +129,7 @@ class EnhancedOSCScanner:
 ▒ ░▄▄▄█ █ ▒      ▐░▌ ▒  ▀▀▀▀▀█ ▒  ▄          
 ░▄▄▄▄▄▄▄█ ░▄▄▄▄▄▄▒▀  ░▄▄▄▄▄▄▄█ ░▄▄░          
 {Style.RESET_ALL}
-{Fore.CYAN}OSC - Open Source Code Scanner
+{Fore.CYAN}OSC - Open Source Code Project Scanner
 {Fore.YELLOW}Tool Pentest BugBounty
 {Style.RESET_ALL}
 Target: {self.target}
