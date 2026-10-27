@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """
-OSC - Open Source Code Scanner
-Fixed Version - No more parameter errors
-Author : iyanji
+Tools Bug Bounty
 """
 
 import requests
