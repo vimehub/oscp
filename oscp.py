@@ -130,7 +130,7 @@ class EnhancedOSCScanner:
 ░▄▄▄▄▄▄▄█ ░▄▄▄▄▄▄▒▀  ░▄▄▄▄▄▄▄█ ░▄▄░          
 {Style.RESET_ALL}
 {Fore.CYAN}OSC - Open Source Code Scanner
-{Fore.YELLOW}Tool pentest BugBounty
+{Fore.YELLOW}Tool Pentest BugBounty
 {Style.RESET_ALL}
 Target: {self.target}
 Sesi: {'Disediakan' if self.session_cookie else 'Tidak disediakan'}
@@ -591,7 +591,7 @@ Thread: {self.max_threads} | Timeout: {self.timeout} detik
         """Main scanning function"""
         self.print_banner()
         
-        print(f"{Fore.GREEN}[*] Memulai Scan OSC...{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}[*] Memulai Scan OSCP...{Style.RESET_ALL}")
         print(f"{Fore.GREEN}[*] Mencari URL...{Style.RESET_ALL}")
         
         # Discover URL untuk di-scan
